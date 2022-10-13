@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 function Home() {
   const success = useSelector((state) => state.success);
-  // const counter = useSelector((state) => state.counter);
   console.log(useSelector((state) => state));
 
   return (

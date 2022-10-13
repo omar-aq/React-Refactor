@@ -1,6 +1,5 @@
 import React from "react";
-//data
-import { collections } from "../data";
+
 //components
 import Cards from "./Cards";
 
@@ -41,7 +40,7 @@ function Main() {
       </div>
 
       <div className="row tm-gallery">
-        <Cards collections={collections} />
+        <Cards />
       </div>
     </main>
   );

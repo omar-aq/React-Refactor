@@ -1,23 +1,38 @@
+import { React, lazy, Suspense } from "react";
 import "./css/templatemo-style.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 //components
-import Home from "./pages/Home";
-import About from "./components/About";
-import Contact from "./pages/Contact";
-import Error from "./pages/Error";
-import Login from "./pages/Login";
+
+//redux
+import { useSelector } from "react-redux";
+//lazy
+const About = lazy(() => import("./components/About"));
+const Login = lazy(() => import("./pages/Login"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Home = lazy(() => import("./pages/Home"));
+const Error = lazy(() => import("./pages/Error"));
 
 function App() {
+  const success = useSelector((state) => state.success);
+  console.log(success);
   return (
     <div className="container">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/about"
+              element={success ? <About /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/contact"
+              element={success ? <Contact /> : <Navigate to="/login" />}
+            />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );

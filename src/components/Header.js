@@ -33,7 +33,7 @@ function Header() {
                   </Link>
                 </li>
                 <li className="tm-nav-li">
-                  <Link className="tm-nav-link" to="/home">
+                  <Link className="tm-nav-link" to="/">
                     Home
                   </Link>
                 </li>

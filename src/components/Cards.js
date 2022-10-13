@@ -2,7 +2,10 @@ import React from "react";
 //redux
 //components
 import SingleCard from "./SingleCard";
-function Cards({ collections }) {
+//data
+import { collections } from "../data";
+
+function Cards() {
   return (
     <div id="tm-gallery-page-pizza" className="tm-gallery-page">
       {collections.map((item) => {
