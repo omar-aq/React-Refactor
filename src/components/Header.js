@@ -2,12 +2,19 @@ import React from "react";
 // import dataImage from "../img/simple-house-01.jpg";
 import logo from "../img/simple-house-logo.png";
 import { Link } from "react-router-dom";
+//redux
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
+  const success = useSelector((state) => state.success);
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const logoutHandler = () => {
     localStorage.removeItem("success");
     localStorage.removeItem("user");
-    window.location.reload();
+    // window.location.reload();
+    // navigate("/login");
+    dispatch({ type: "logout" });
   };
   return (
     <div className="placeholder">
@@ -52,8 +59,9 @@ function Header() {
                     style={{ cursor: "pointer" }}
                     onClick={logoutHandler}
                     className="tm-nav-link"
+                    to={"/"}
                   >
-                    logout
+                    {success ? "Logout" : "Login"}
                   </Link>
                 </li>
               </ul>

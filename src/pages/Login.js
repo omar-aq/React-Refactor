@@ -1,25 +1,28 @@
 import "../css/login.css";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 //component
 import Home from "./Home";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
+  const navigate = useNavigate();
   const success = useSelector((state) => state.success);
   const dispatch = useDispatch();
 
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   //   const [success, setSuccess] = useState(false);
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem("success", true);
     localStorage.setItem("user", user);
     setUser("");
     setPwd("");
     dispatch({ type: "success" });
+    navigate("/");
   };
 
   useEffect(() => {
