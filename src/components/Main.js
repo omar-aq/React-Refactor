@@ -7,7 +7,10 @@ function Main() {
   return (
     <main>
       <header className="row tm-welcome-section">
-        <h2 className="col-12 text-center tm-section-title">
+        <h2
+          data-testid="header"
+          className="col-12 text-center tm-section-title"
+        >
           Welcome to Simple House
         </h2>
         <p className="col-12 text-center">

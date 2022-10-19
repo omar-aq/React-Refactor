@@ -3,10 +3,10 @@ import React from "react";
 import logo from "../img/simple-house-logo.png";
 import { Link } from "react-router-dom";
 //redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Header() {
-  const success = useSelector((state) => state.success);
+  // const success = useSelector((state) => state.success);
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const logoutHandler = () => {
@@ -56,12 +56,13 @@ function Header() {
                 </li>
                 <li className="tm-nav-li">
                   <Link
+                    data-testid="logout"
                     style={{ cursor: "pointer" }}
                     onClick={logoutHandler}
                     className="tm-nav-link"
-                    to={"/"}
+                    to={"/login"}
                   >
-                    {success ? "Logout" : "Login"}
+                    Logout
                   </Link>
                 </li>
               </ul>

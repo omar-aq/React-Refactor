@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Home from "./Home";
 //redux
 import { useDispatch, useSelector } from "react-redux";
+import { act } from "react-dom/test-utils";
 
 function Login() {
   const navigate = useNavigate();
@@ -15,14 +16,18 @@ function Login() {
   const [user, setUser] = useState("");
   const [pwd, setPwd] = useState("");
   //   const [success, setSuccess] = useState(false);
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    localStorage.setItem("success", true);
-    localStorage.setItem("user", user);
-    setUser("");
-    setPwd("");
-    dispatch({ type: "success" });
-    navigate("/");
+    act(() => {
+      e.preventDefault();
+      localStorage.setItem("success", true);
+      localStorage.setItem("user", user);
+      setUser("");
+      setPwd("");
+      dispatch({ type: "success" });
+      console.log(success);
+      navigate("/");
+    });
   };
 
   useEffect(() => {
@@ -43,6 +48,7 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <label htmlFor="username">Username:</label>
               <input
+                data-testid="username"
                 type="text"
                 id="username"
                 autoComplete="off"
@@ -53,13 +59,16 @@ function Login() {
 
               <label htmlFor="password">Password:</label>
               <input
+                data-testid="password"
                 type="password"
                 id="password"
                 onChange={(e) => setPwd(e.target.value)}
                 value={pwd}
                 required
               />
-              <button>Sign In</button>
+              <button data-testid="submitBtn" type="submit">
+                Sign In
+              </button>
             </form>
           </div>
         </section>

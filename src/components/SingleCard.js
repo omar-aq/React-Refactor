@@ -3,10 +3,10 @@ import React from "react";
 //components
 import ButtonsHandler from "./ButtonsHandler";
 
-function SingleCard({ item }) {
+function SingleCard({ title, info, image }) {
   // const counter = useSelector((state) => state.counter);
   // const dispatch = useDispatch();
-  const { title, info, image } = item;
+  // const { title, info, image } = item;
 
   // const increaseHandler = () => {
   //   dispatch({ type: "increase" });
