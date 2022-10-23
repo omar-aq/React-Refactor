@@ -4,6 +4,7 @@ import logo from "../img/simple-house-logo.png";
 import { Link } from "react-router-dom";
 //redux
 import { useDispatch } from "react-redux";
+import { authActions } from "../store";
 
 function Header() {
   // const success = useSelector((state) => state.success);
@@ -14,7 +15,8 @@ function Header() {
     localStorage.removeItem("user");
     // window.location.reload();
     // navigate("/login");
-    dispatch({ type: "logout" });
+
+    dispatch(authActions.logout());
   };
   return (
     <div className="placeholder">

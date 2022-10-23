@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //components
 import SingleCard from "./SingleCard";
 //data
-// import { collections } from "../data";
+import { collections } from "../data";
 
 const url = "https://endtoend.free.beeceptor.com/my/api/path";
 
@@ -20,8 +20,8 @@ function Cards() {
   }, []);
   return (
     <div id="tm-gallery-page-pizza" className="tm-gallery-page">
-      {data &&
-        data.map((item) => {
+      {collections &&
+        collections.map((item) => {
           return (
             <li key={item.id} style={{ listStyleType: "none" }}>
               <SingleCard {...item} />

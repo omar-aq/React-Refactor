@@ -21,14 +21,17 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={success ? <Navigate replace to="/" /> : <Login />}
+            />
             <Route
               path="/about"
-              element={success ? <About /> : <Navigate to="/login" />}
+              element={success ? <About /> : <Navigate replace to="/login" />}
             />
             <Route
               path="/contact"
-              element={success ? <Contact /> : <Navigate to="/login" />}
+              element={success ? <Contact /> : <Navigate replace to="/login" />}
             />
             <Route path="*" element={<Error />} />
           </Routes>

@@ -1,15 +1,16 @@
 import "../css/login.css";
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 //component
 import Home from "./Home";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { act } from "react-dom/test-utils";
+// import { act } from "react-dom/test-utils";
+import { authActions } from "../store";
 
 function Login() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const success = useSelector((state) => state.success);
   const dispatch = useDispatch();
 
@@ -23,14 +24,16 @@ function Login() {
     localStorage.setItem("user", user);
     setUser("");
     setPwd("");
-    dispatch({ type: "success" });
+    // dispatch({ type: "success" });
+    dispatch(authActions.success());
     console.log(success);
-    navigate("/");
+    // navigate("/", { replace: true });
   };
 
   useEffect(() => {
     if (localStorage.getItem("success")) {
-      dispatch({ type: "success" });
+      // dispatch({ type: "success" });
+      dispatch(authActions.success());
     }
     // eslint-disable-next-line
   }, []);
