@@ -18,16 +18,14 @@ function Login() {
   //   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
-    act(() => {
-      e.preventDefault();
-      localStorage.setItem("success", true);
-      localStorage.setItem("user", user);
-      setUser("");
-      setPwd("");
-      dispatch({ type: "success" });
-      console.log(success);
-      navigate("/");
-    });
+    e.preventDefault();
+    localStorage.setItem("success", true);
+    localStorage.setItem("user", user);
+    setUser("");
+    setPwd("");
+    dispatch({ type: "success" });
+    console.log(success);
+    navigate("/");
   };
 
   useEffect(() => {

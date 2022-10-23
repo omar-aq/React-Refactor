@@ -5,7 +5,7 @@ import SingleCard from "./SingleCard";
 //data
 // import { collections } from "../data";
 
-const url = "https://react.free.beeceptor.com/my/api/path";
+const url = "https://endtoend.free.beeceptor.com/my/api/path";
 
 function Cards() {
   const [data, setData] = useState([]);
